@@ -8,7 +8,7 @@
  * Custom blocks
  */
 //% weight=20 color=#0fbc11 icon="▀"
-namespace I2C_LCD1602 {
+namespace LCD{
     let i2cAddr: number // 0x3F: PCF8574A, 0x27: PCF8574
     let BK: number      // backlight control
     let RS: number      // command/data
@@ -72,10 +72,10 @@ namespace I2C_LCD1602 {
     }
 
     /**
-     * initial LCD, set I2C address. Address is 39/63 for PCF8574/PCF8574A
+     * 初期化し I2C を有効にします。必ず最初においてください。ループする必要はありません。0はなくても自動で判断します。
      * @param Addr is i2c address for LCD, eg: 0, 39, 63. 0 is auto find address
      */
-    //% blockId="I2C_LCD1620_SET_ADDRESS" block="LCD initialize with Address %addr"
+    //% blockId="I2C_LCD1620_SET_ADDRESS" block="LCDの初期化（０の値変更しない） %addr"
     //% weight=100 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function LcdInit(Addr: number) {
@@ -96,12 +96,12 @@ namespace I2C_LCD1602 {
     }
 
     /**
-     * show a number in LCD at given position
+     * 数字を立てX0から15の範囲、Yは0から１の位置で表示します
      * @param n is number will be show, eg: 10, 100, 200
      * @param x is LCD column position, eg: 0
      * @param y is LCD row position, eg: 0
      */
-    //% blockId="I2C_LCD1620_SHOW_NUMBER" block="show number %n|at x %x|y %y"
+    //% blockId="I2C_LCD1620_SHOW_NUMBER" block="数字 %n|を横(0-15) x %x|縦 %y(0-1)で表示"
     //% weight=90 blockGap=8
     //% x.min=0 x.max=15
     //% y.min=0 y.max=1
@@ -117,7 +117,7 @@ namespace I2C_LCD1602 {
      * @param x is LCD column position, [0 - 15], eg: 0
      * @param y is LCD row position, [0 - 1], eg: 0
      */
-    //% blockId="I2C_LCD1620_SHOW_STRING" block="show string %s|at x %x|y %y"
+    //% blockId="I2C_LCD1620_SHOW_STRING" block="文字列 %n|を横(0-15) x %x|縦 %y(0-1)で表示"
     //% weight=90 blockGap=8
     //% x.min=0 x.max=15
     //% y.min=0 y.max=1
@@ -140,7 +140,7 @@ namespace I2C_LCD1602 {
     /**
      * turn on LCD
      */
-    //% blockId="I2C_LCD1620_ON" block="turn on LCD"
+    //% blockId="I2C_LCD1620_ON" block="LCDの電源を入れる"
     //% weight=81 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function on(): void {
@@ -150,7 +150,7 @@ namespace I2C_LCD1602 {
     /**
      * turn off LCD
      */
-    //% blockId="I2C_LCD1620_OFF" block="turn off LCD"
+    //% blockId="I2C_LCD1620_OFF" block="LCDの電源OFF"
     //% weight=80 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function off(): void {
@@ -160,7 +160,7 @@ namespace I2C_LCD1602 {
     /**
      * clear all display content
      */
-    //% blockId="I2C_LCD1620_CLEAR" block="clear LCD"
+    //% blockId="I2C_LCD1620_CLEAR" block="画面のクリア"
     //% weight=85 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function clear(): void {
@@ -170,7 +170,7 @@ namespace I2C_LCD1602 {
     /**
      * turn on LCD backlight
      */
-    //% blockId="I2C_LCD1620_BACKLIGHT_ON" block="turn on backlight"
+    //% blockId="I2C_LCD1620_BACKLIGHT_ON" block="バックライト点灯"
     //% weight=71 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function BacklightOn(): void {
@@ -181,7 +181,7 @@ namespace I2C_LCD1602 {
     /**
      * turn off LCD backlight
      */
-    //% blockId="I2C_LCD1620_BACKLIGHT_OFF" block="turn off backlight"
+    //% blockId="I2C_LCD1620_BACKLIGHT_OFF" block="バックライト消灯"
     //% weight=70 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function BacklightOff(): void {
@@ -192,7 +192,7 @@ namespace I2C_LCD1602 {
     /**
      * shift left
      */
-    //% blockId="I2C_LCD1620_SHL" block="Shift Left"
+    //% blockId="I2C_LCD1620_SHL" block="カーソルを左にシフト"
     //% weight=61 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function shl(): void {
@@ -202,7 +202,7 @@ namespace I2C_LCD1602 {
     /**
      * shift right
      */
-    //% blockId="I2C_LCD1620_SHR" block="Shift Right"
+    //% blockId="I2C_LCD1620_SHR" block="カーソルを右にシフト"
     //% weight=60 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function shr(): void {
