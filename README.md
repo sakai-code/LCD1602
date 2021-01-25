@@ -40,8 +40,11 @@ LCDの初期化、0で自動的に検索し適用します（初期値）
 
 - ShowNumber(n: number, x: number, y: number)  
 数字を表示します
+
 n: 対象の数字
+
 x:LCDのX軸の位置, [0 - 15]  
+
 y:LCdのY軸の位置, [0 - 1]  
 
 - ShowString(s: string, x: number, y: number)  
@@ -85,4 +88,5 @@ Copyright (c) 2018, microbit/micropython Chinese community
 
 
 [From microbit/micropython Chinese community](http://www.micropython.org.cn)
+
 上記より日本語訳をしました。　
