@@ -3,19 +3,18 @@
 makecode I2C LCD1602 package for micro:bit  
 
 Author: shaoziyang  
-Date:   2018.Mar  
+Date:   2021/1/25
   
-![](lcd.jpg)
 
-## Add extension
 
-open your microbit makecode project, in Extension, paste  
+## パッケージの追加
 
-https://github.com/makecode-packages/i2cLCD1602  
+makecodeの拡張から
 
-to search box then search.
+https://github.com/sakai-code/LCD1602
+と検索してください（その他SET）より実行も可能
 
-## Basic usage
+## 使い方の例
 
 ```
 let item = 0
@@ -29,7 +28,7 @@ basic.forever(() => {
 ```
 
 
-## I2C Address  
+## I2C Addressのアドレスの例 
 - PCF8574: 39  
 - PCF8574A: 63  
 - Auto: 0
@@ -37,41 +36,37 @@ basic.forever(() => {
 ## API
 
 - LcdInit(Addr: number)  
-Initial LCD  
-Addr: I2C Address. If Addr is zero, it will try to recognition correctly address automaticly.  
+LCDの初期化、0で自動的に検索し適用します（初期値）
 
 - ShowNumber(n: number, x: number, y: number)  
-show a number in LCD at given position.  
-n: number will be show  
-x: is LCD column position, [0 - 15]  
-y: is LCD row position, [0 - 1]  
+数字を表示します
+n: 対象の数字
+x:LCDのX軸の位置, [0 - 15]  
+y:LCdのY軸の位置, [0 - 1]  
 
 - ShowString(s: string, x: number, y: number)  
-show a string in LCD at given position.  
-s: string will be show  
-x: is LCD column position, [0 - 15]  
-y: is LCD row position, [0 - 1]  
+文字列を表示します、機能は数字と同じ
 
 - on()  
-turn on LCD  
+LCDの起動
 
 - off()  
-turn off LCD  
+LCDの電源OFF
 
 - clear()  
-clear LCD content  
+画面のクリア
 
 - BacklightOn()  
-turn on LCD backlight  
+バックライトの点灯
 
 - BacklightOff()  
-turn off LCD backlight  
+バックライトの消灯
 
 - shl()
-shift left screen
+左にシフト
 
 - shr()
-shift right screen
+右にシフトします
 
 
 ## Demo
@@ -90,3 +85,4 @@ Copyright (c) 2018, microbit/micropython Chinese community
 
 
 [From microbit/micropython Chinese community](http://www.micropython.org.cn)
+上記より日本語訳をしました。　
